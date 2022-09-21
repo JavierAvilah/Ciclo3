@@ -10,4 +10,5 @@ public class PrestamosApplication {
 		SpringApplication.run(PrestamosApplication.class, args);
 	}
 
+
 }

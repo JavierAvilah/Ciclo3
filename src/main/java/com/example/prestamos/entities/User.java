@@ -23,8 +23,60 @@ public class User {
     @JoinColumn(name = "tipodocumenoid")
     private TipoDocumento tipoDocumento;
 
+    @OneToOne
+    @JoinColumn(name = "iddireccion")
+    private Direccion direccion;
+
+    @Column(name = "perfil")
+    private EnumPerfiles perfil;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    @Column (name = "correo")
+    private String correo;
+
+    @Column(name = "password", length = 200)
+    private String password;
     public int getId() {
         return id;
+    }
+
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
+    public EnumPerfiles getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(EnumPerfiles perfil) {
+        this.perfil = perfil;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setId(int id) {
