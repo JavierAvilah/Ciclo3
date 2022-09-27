@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<html lang="en" xmlns:th="http//www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{master}">
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Documento</title>
@@ -7,21 +7,21 @@
 
 </head>
 <body>
+    <div layout:fragment="content">
+      <form action="/tipodocumento/createdoc" method="post">
+          <div class="mt-8 container text-center">
+            <span class="input-group-text" id="addon-wrapping">Nuevo tipo de documento</span>
+            <input name="nombre" type="text" class="form-control" placeholder="Aqui coloque el nombre del documento">
 
-  <form action="/tipodocumento/createdoc" method="post">
-      <div class="mt-8 container text-center">
-        <span class="input-group-text" id="addon-wrapping">Nuevo tipo de documento</span>
-        <input name="nombre" type="text" class="form-control" placeholder="Aqui coloque el nombre del documento">
+          </div>
 
-      </div>
+          <div class="mt-8 container text-center">
+              <button type= "submit" class="btn btn-outline-success">Guardar</button>
+              <a href="/tipodocumento/index" class="btn btn-danger">Cancelar</a>
+          </div>
+      </form>
 
-      <div class="mt-8 container text-center">
-          <button type= "submit" class="btn btn-outline-success">Guardar</button>
-          <a href="/tipodocumento/index" class="btn btn-danger">Cancelar</a>
-      </div>
-  </form>
-
-
+    </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

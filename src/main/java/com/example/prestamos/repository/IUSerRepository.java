@@ -12,6 +12,8 @@ import java.util.Optional;
 
 @Repository // indica que va hacer un repositorio
 public interface IUSerRepository extends JpaRepository<User,Integer> {
+    User findByCorreo(String correo);
+
 
     Optional<User> findBynombresAndApellidos(String nombres, String apellidos);
 

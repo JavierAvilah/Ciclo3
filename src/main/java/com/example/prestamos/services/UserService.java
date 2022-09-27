@@ -4,6 +4,7 @@ import com.example.prestamos.entities.User;
 import com.example.prestamos.excepcion.ServiceExepcion;
 import com.example.prestamos.repository.IUSerRepository;
 import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class UserService {
     }
 
     public Response creareUser(User data){
+        BCryptPasswordEncoder encriptarPass = new BCryptPasswordEncoder();
+        data.setPassword(encriptarPass.encode(data.getPassword()));
         Response response = new Response();
         this.userRepository.save(data);
         response.setCode(200);
@@ -98,6 +101,7 @@ public class UserService {
         }
 
         User data = getuser(u.getId());
+        data.setNombres(u.getNombres());
         data.setApellidos(u.getApellidos());
         userRepository.save(data);
         response.setCode(200);
@@ -161,8 +165,9 @@ public class UserService {
             return response;
         }
 
-
-
-
+    }
+    public User selectByUserName(String username){
+        User existe = this.userRepository.findByCorreo(username);
+        return existe;
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("tipodocumento")
-public class DocumentoController {
+public class DocumentoController extends BaseController {
 
     private TipoDocumentoService tipoDocumentoService;
 
@@ -26,6 +26,7 @@ public class DocumentoController {
     @GetMapping("index")
     public String index(Model documentos){
 
+        documentos.addAttribute("usuarioauntenticado",seguridad());
         ArrayList<TipoDocumento> documentosDB = tipoDocumentoService.selecAll();
         documentos.addAttribute("misdocumentos",documentosDB);
 
@@ -33,7 +34,8 @@ public class DocumentoController {
     }
 
     @GetMapping("create")
-    public String create(){
+    public String create(Model data){
+        data.addAttribute("usuarioauntenticado",seguridad());
         return "documento/create";
     }
 

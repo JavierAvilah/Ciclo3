@@ -36,46 +36,46 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Crea una cuenta!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" action="/login/postregistro" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" 
+                                    <input name="nombres" type="text" class="form-control form-control-user"
                                            placeholder="Nombres">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" 
+                                    <input name="apellidos" type="text" class="form-control form-control-user"
                                            placeholder="Apellidos">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" 
+                                    <input name="numeroDocumento" type="text" class="form-control form-control-user"
                                            placeholder="Documento">
                                 </div>
-                                <div class="col-sm-6">
-                                    <select>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select name="tipoDocumento" class="form-control">
                                         <option>Seleccione el tipo de documento</option>
-                                        <option th:each="doc : ${misdocumentos}" th:text></option>
+                                        <option th:each="doc : ${misdocumentos}" th:text="${doc.nombre}" th:value = "${doc.id}"></option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                <input name="correo" type="email" class="form-control form-control-user" id="exampleInputEmail"
                                        placeholder="Correo electronico">
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user"
+                                    <input name="password" type="password" class="form-control form-control-user"
                                            id="exampleInputPassword" placeholder="Contraseña">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user"
+                                    <input name="validatePassword" type="password" class="form-control form-control-user"
                                            id="exampleRepeatPassword" placeholder="Escriba su contraseña nuevamente">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Registrar cuenta
-                            </a>
+                            </button>
                             <!--<hr>
                             <a href="index.html" class="btn btn-google btn-user btn-block">
                                 <i class="fab fa-google fa-fw"></i> Register with Google

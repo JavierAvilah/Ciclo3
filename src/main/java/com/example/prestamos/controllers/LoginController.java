@@ -1,5 +1,6 @@
 package com.example.prestamos.controllers;
 
+import com.example.prestamos.dto.registroDTO;
 import com.example.prestamos.entities.TipoDocumento;
 import com.example.prestamos.entities.User;
 import com.example.prestamos.services.Response;
@@ -53,6 +54,29 @@ public class LoginController {
             return  new RedirectView("/login/error");
         }
 
+    }
+    @PostMapping("postregistro")
+    public RedirectView postRegistro(registroDTO data){
+
+        if (!data.getPassword().equals(data.getValidatePassword())){
+            System.out.println("No coninciden las contraseñas");
+            return  new RedirectView("/login/error");
+        }
+
+        User user = new User();
+        user.setApellidos(data.getApellidos());
+        user.setCorreo(data.getCorreo());
+        user.setNombres(data.getNombres());
+        user.setNumeroDocumento(data.getNumeroDocumento());
+        user.setTipoDocumento(data.getTipoDocumento());
+        user.setPassword(data.getPassword());
+
+        Response response = userService.creareUser(user);
+        if (response.getCode()==200){
+            return new RedirectView("/login/login");
+        }else {
+            return  new RedirectView("/login/error");
+        }
     }
 
     @GetMapping("error")
